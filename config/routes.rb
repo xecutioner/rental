@@ -8,4 +8,6 @@ Rails.application.routes.draw do
      match 'search', via: [:get, :post]
     end
   end
+
+  root "rentals#index"
 end
