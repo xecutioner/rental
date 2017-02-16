@@ -1,2 +1,8 @@
 <h1>Rentals#index</h1>
 <p>Find me in app/views/rentals/index.html.erb</p>
+<%= @rentals.each do |rental|%>
+  <hr/>
+  <%= rental.fb_created_time %>
+  <%= rental.message%>
+  <%= rental.json_dump.inspect%>
+<%end%>

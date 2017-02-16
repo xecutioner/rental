@@ -8,7 +8,7 @@ namespace :facebook do
     data.each do |datum|
       id =  datum["id"]
       unless Rental.find_by_facebook_object_id(id)
-        Rental.create!(facebook_object_id: id, json_dump: datum.to_s)
+        Rental.create!(facebook_object_id: id, json_dump: datum.to_json, fb_created_time: datum["created_time"], message: datum["message"])
       end
     end
     # grab and feed into the database
