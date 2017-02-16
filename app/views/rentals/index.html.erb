@@ -1,8 +1,10 @@
-<h1>Rentals#index</h1>
-<p>Find me in app/views/rentals/index.html.erb</p>
+<div class="central-block">
+<h1>Rentals</h1>
+
 <%= @rentals.each do |rental|%>
   <hr/>
-  <%= rental.fb_created_time %>
-  <%= rental.message%>
-  <%= rental.json_dump.inspect%>
+    <%= rental.message%>
+  <br/>
+    <%= rental.fb_created_time %>
+  <br/>
 <%end%>
