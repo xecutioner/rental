@@ -6,7 +6,10 @@ namespace :facebook do
     client = Koala::Facebook::API.new(token)
     data = client.get_connection(group_id, "feed")
     data.each do |datum|
-      puts datum["id"]
+      id =  datum["id"]
+      unless Rental.find_by_facebook_object_id(id)
+        Rental.create!(facebook_object_id: id, json_dump: datum.to_s)
+      end
     end
     # grab and feed into the database
   end
