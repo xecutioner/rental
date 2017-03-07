@@ -18,14 +18,10 @@ namespace :facebook do
       data.each do |datum|
         id =  datum["id"]
         unless Rental.find_by_facebook_object_id(id)
-          Rental.create!(facebook_object_id: id, json_dump: datum.to_json, fb_created_time: datum["created_time"], message: datum["message"])
+          Rental.create!(facebook_object_id: id, json_dump: datum.to_json, fb_created_time: datum["updated_time"], message: datum["message"])
         end
       end
     end
-    # grab and feed into the database
   end
 
-  desc "TODO"
-  task :my_task2 => :environment do
-  end
 end
