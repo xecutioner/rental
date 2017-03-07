@@ -8,7 +8,13 @@ namespace :facebook do
       client = Koala::Facebook::OAuth.new(app_id, app_secret)
       token = client.get_app_access_token
       client = Koala::Facebook::API.new(token)
-      data = client.get_connection(group_id, "feed")
+      begin
+        data = client.get_connection(group_id, "feed")
+      rescue Exception => e
+        puts "***** EXCEPTION DETECTED WITH GROUP #{group_id}***** "
+        puts e.message
+        data = []
+      end
       data.each do |datum|
         id =  datum["id"]
         unless Rental.find_by_facebook_object_id(id)
