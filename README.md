@@ -4,7 +4,7 @@ if figaro is not loading the env variables. You may want to stop the spring
 `bin/spring stop`
 
 #  TODO:
-Automate freaking fb tokens
+~~Automate freaking fb tokens~~
 Add more groups.
 Add full text search.
 Add google translations.

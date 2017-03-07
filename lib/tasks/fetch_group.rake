@@ -1,9 +1,12 @@
 namespace :facebook do
   desc "fetch rental posts"
   task :fetch => :environment do
-    token = ENV["token"]
+    app_id = ENV["app_id"]
+    app_secret = ENV["app_secret"]
     group_ids = YAML.load ENV["group_ids"]
     group_ids.each do |group_id|
+      client = Koala::Facebook::OAuth.new(app_id, app_secret)
+      token = client.get_app_access_token
       client = Koala::Facebook::API.new(token)
       data = client.get_connection(group_id, "feed")
       data.each do |datum|
